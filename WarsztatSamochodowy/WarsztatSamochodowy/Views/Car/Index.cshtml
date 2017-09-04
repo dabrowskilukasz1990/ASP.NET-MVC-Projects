@@ -1,0 +1,85 @@
+﻿@model IEnumerable<WarsztatSamochodowy.Models.Car>
+
+@{
+    ViewBag.Title = "Samochody";
+    Layout = "~/Views/Shared/_AccountPartialLayout.cshtml";
+
+    if (Session["EmployeeId"] == null)
+    {
+        Response.Redirect("~/Account/Login");
+    }
+}
+
+<h2>Samochody</h2>
+
+<p>
+    @Html.ActionLink("Dodaj samochód", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RegisterNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VinNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Brand)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResponsiblePerson)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TaskList)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfReceipt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegisterNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VinNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Brand)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ResponsiblePerson)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TaskList)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfReceipt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.ActionLink("Edytuj", "Edit", new { id=item.CarId }) |
+            @Html.ActionLink("Szczegóły", "Details", new { id=item.CarId }) |
+            @Html.ActionLink("Usuń", "Delete", new { id=item.CarId })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div>
+    @Html.ActionLink("Wróć", "Manage", "Account")
+</div>

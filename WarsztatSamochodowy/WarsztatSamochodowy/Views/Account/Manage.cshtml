@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Manage";
+    Layout = "~/Views/Shared/_AccountPartialLayout.cshtml";
+
+    if (Session["EmployeeId"] == null)
+    {
+        Response.Redirect("~/Account/Login");
+    }
+}
+
+<h2>Zarządzanie</h2>
+
+<h4>Witaj @Session["FirstName"].ToString()</h4>
+
+<br />
+<h4>@Html.ActionLink("Samochody", "Index", "Car")</h4>
+<br />
+<h4>@Html.ActionLink("Pracownicy", "Index", "Employee")</h4>
+
+
