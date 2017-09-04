@@ -20,7 +20,8 @@ namespace WarsztatSamochodowy.Controllers
         {
             return View(db.car.ToList());
         }
-
+       
+        //TEST!!!
         // GET: Car/Details/5
         public ActionResult Details(int? id)
         {
