@@ -49,11 +49,12 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ResponsiblePerson)
+            @Html.DisplayName("Osoba odpowiedzialna (Nazwisko)")
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ResponsiblePerson)
+            @Html.DisplayFor(model => model.Employee.LastName)
+            @Html.DisplayFor(model => model.Employee.FirstName)
         </dd>
 
         <dt>

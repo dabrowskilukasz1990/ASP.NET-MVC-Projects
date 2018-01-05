@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -144,7 +145,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -156,9 +159,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201709042046050_New.cs" />
-    <Compile Include="Migrations\201709042046050_New.Designer.cs">
-      <DependentUpon>201709042046050_New.cs</DependentUpon>
+    <Compile Include="Migrations\201709101006472_FirstMigration.cs" />
+    <Compile Include="Migrations\201709101006472_FirstMigration.Designer.cs">
+      <DependentUpon>201709101006472_FirstMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Car.cs" />
@@ -189,7 +192,7 @@
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Shared\_AccountPartialLayout.cshtml" />
     <Content Include="Views\Home\CheckYourCar.cshtml" />
-    <Content Include="Views\Home\Test.cshtml" />
+    <Content Include="Views\Home\CarFound.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -201,8 +204,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201709042046050_New.resx">
-      <DependentUpon>201709042046050_New.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201709101006472_FirstMigration.resx">
+      <DependentUpon>201709101006472_FirstMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

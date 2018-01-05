@@ -30,7 +30,7 @@
             @Html.DisplayNameFor(model => model.Model)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ResponsiblePerson)
+            @Html.DisplayName("Osoba odpowiedzialna")
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TaskList)
@@ -44,39 +44,41 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.RegisterNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VinNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Brand)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Model)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ResponsiblePerson)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TaskList)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateOfReceipt)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.ActionLink("Edytuj", "Edit", new { id=item.CarId }) |
-            @Html.ActionLink("Szczegóły", "Details", new { id=item.CarId }) |
-            @Html.ActionLink("Usuń", "Delete", new { id=item.CarId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegisterNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VinNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.LastName)
+                @Html.DisplayFor(modelItem => item.Employee.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskList)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfReceipt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.ActionLink("Edytuj", "Edit", new { id = item.CarId }) |
+                @Html.ActionLink("Szczegóły", "Details", new { id = item.CarId }) |
+                @Html.ActionLink("Usuń", "Delete", new { id = item.CarId })
+            </td>
+        </tr>
+    }
 
 </table>
 

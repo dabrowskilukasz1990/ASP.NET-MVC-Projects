@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace WarsztatSamochodowy.Models
 {
@@ -38,5 +34,8 @@ namespace WarsztatSamochodowy.Models
         public string Price { get; set; }
 
         public string CarErrorMessage { get; set; }
+
+        public int EmployeeId { get; set; }
+        public virtual Employee Employee { get; set; }
     }
 }

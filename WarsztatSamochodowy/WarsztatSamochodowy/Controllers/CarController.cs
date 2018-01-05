@@ -18,9 +18,10 @@ namespace WarsztatSamochodowy.Controllers
         // GET: Car
         public ActionResult Index()
         {
-            return View(db.car.ToList());
+            var car = db.car.Include(c => c.Employee);
+            return View(car.ToList());
         }
-       
+
         // GET: Car/Details/5
         public ActionResult Details(int? id)
         {
@@ -39,6 +40,9 @@ namespace WarsztatSamochodowy.Controllers
         // GET: Car/Create
         public ActionResult Create()
         {
+            ViewBag.EmployeeId = new SelectList(db.employee, "EmployeeId", "LastName");
+            
+
             return View();
         }
 
@@ -47,7 +51,7 @@ namespace WarsztatSamochodowy.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CarId,RegisterNumber,VinNumber,Brand,Model,ResponsiblePerson,TaskList,DateOfReceipt,Price")] Car car)
+        public ActionResult Create([Bind(Include = "CarId,RegisterNumber,VinNumber,Brand,Model,ResponsiblePerson,TaskList,DateOfReceipt,Price,CarErrorMessage,EmployeeId")] Car car)
         {
             if (ModelState.IsValid)
             {
@@ -56,6 +60,7 @@ namespace WarsztatSamochodowy.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.EmployeeId = new SelectList(db.employee, "EmployeeId", "LastName", car.EmployeeId);
             return View(car);
         }
 
@@ -71,6 +76,7 @@ namespace WarsztatSamochodowy.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.EmployeeId = new SelectList(db.employee, "EmployeeId", "LastName", car.EmployeeId);
             return View(car);
         }
 
@@ -79,7 +85,7 @@ namespace WarsztatSamochodowy.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CarId,RegisterNumber,VinNumber,Brand,Model,ResponsiblePerson,TaskList,DateOfReceipt,Price")] Car car)
+        public ActionResult Edit([Bind(Include = "CarId,RegisterNumber,VinNumber,Brand,Model,ResponsiblePerson,TaskList,DateOfReceipt,Price,CarErrorMessage,EmployeeId")] Car car)
         {
             if (ModelState.IsValid)
             {
@@ -87,6 +93,7 @@ namespace WarsztatSamochodowy.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.EmployeeId = new SelectList(db.employee, "EmployeeId", "LastName", car.EmployeeId);
             return View(car);
         }
 

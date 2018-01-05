@@ -13,6 +13,7 @@ namespace WarsztatSamochodowy.Controllers
         // GET: Home
         public ActionResult Index()
         {
+
             return View();
         }
         public ActionResult CheckYourCar()
@@ -34,13 +35,12 @@ namespace WarsztatSamochodowy.Controllers
                 }
                 else
                 {
-                    return View("Test", carDetails);
+                    return View("CarFound", carDetails);
                 }
             }
         }
-        public ActionResult Test()
+        public ActionResult CarFound()
         {
-            
             return View();
         }
     }
