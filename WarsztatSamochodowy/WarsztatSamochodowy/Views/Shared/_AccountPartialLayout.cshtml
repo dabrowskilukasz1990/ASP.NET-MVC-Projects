@@ -21,10 +21,14 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav"></ul>
+
                 <ul class="nav navbar-nav navbar-right">
-                    @Html.ActionLink("Wyloguj się !", "LogOut", "Account", new { area = "" }, new { @class = "navbar-brand" })
+                    <ul class="navbar-header" style="color: #999; font-size: 30px; padding: 18px 15px; line-height: 20px;">
+                        Witaj @Session["FirstName"].ToString(),
+                    </ul>
+                    @Html.ActionLink("Wyloguj się !", "LogOut", "Account", new {area = ""}, new {@class = "navbar-brand"})
                 </ul>
-</div>
+            </div>
         </div>
     </div>
 

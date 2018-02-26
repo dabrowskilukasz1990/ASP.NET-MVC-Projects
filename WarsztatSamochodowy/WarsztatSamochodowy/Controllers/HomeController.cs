@@ -5,11 +5,14 @@ using System.Web;
 using System.Web.Mvc;
 using WarsztatSamochodowy.Context;
 using WarsztatSamochodowy.Models;
+using System.Data.Entity;
 
 namespace WarsztatSamochodowy.Controllers
 {
     public class HomeController : Controller
     {
+        private WarsztatSamochodowyDbContext db = new WarsztatSamochodowyDbContext();
+
         // GET: Home
         public ActionResult Index()
         {
@@ -23,24 +26,24 @@ namespace WarsztatSamochodowy.Controllers
         [HttpPost]
         public ActionResult CheckYourCar(Car searchCar)
         {
-            using (WarsztatSamochodowyDbContext db = new WarsztatSamochodowyDbContext())
+
+            var carDetails = db.car.FirstOrDefault(x => x.CarId == searchCar.CarId && x.RegisterNumber == searchCar.RegisterNumber);
+
+            if (carDetails == null)
             {
-                var carDetails = db.car.FirstOrDefault(x => x.CarId == searchCar.CarId && x.RegisterNumber == searchCar.RegisterNumber);
+                searchCar.CarErrorMessage = "W naszym warsztacie nie ma takiego samochodu.";
 
-                if (carDetails == null)
-                {
-                    searchCar.CarErrorMessage = "W naszym warsztacie nie ma takiego samochodu.";
-
-                    return View("CheckYourCar", searchCar);
-                }
-                else
-                {
-                    return View("CarFound", carDetails);
-                }
+                return View("CheckYourCar", searchCar);
             }
+            else
+            {
+                return View("CarFound", carDetails);
+            }
+
         }
         public ActionResult CarFound()
         {
+
             return View();
         }
     }

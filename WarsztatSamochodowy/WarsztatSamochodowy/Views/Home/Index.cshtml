@@ -1,12 +1,34 @@
 ﻿
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    if (Session["EmployeeId"] == null)
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_AccountPartialLayout.cshtml";
+    }
 }
 
 <h2>Witaj w warsztacie samochodowym u Janusza</h2>
 
 <h1></h1>
 
-<p>@Html.ActionLink("Administracja", "Login", "Account")</p>
+<p>
+        @{
+            if (Session["EmployeeId"] == null)
+            {
+                @Html.ActionLink("Administracja", "Login", "Account");
+
+            }
+            else
+            {
+                @Html.ActionLink("Administracja", "Manage", "Account");
+            }
+        }
+    
+
+</p>
 <p>@Html.ActionLink("Sprawdź swój samochód", "CheckYourCar", "Home")</p>
